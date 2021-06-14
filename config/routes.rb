@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :voids
+  resources :moods
   resources :users
   post "/login", to: "users#login"
   get '/profile', to: "users#profile"
