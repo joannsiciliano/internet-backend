@@ -1,4 +1,6 @@
 class VoidsController < ApplicationController
+  skip_before_action :authorized
+
   def index
     @voids=Void.all
     render json:@voids, include: [:mood]
@@ -6,7 +8,7 @@ class VoidsController < ApplicationController
 
 def create
   @void=Void.create(name: params[:name], message: params[:message], mood_id: params[:mood])
-  render json: @void, status: :created
+  render json: @void, include: [:mood]
 end
 
 def destroy

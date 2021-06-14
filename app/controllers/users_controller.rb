@@ -31,3 +31,4 @@ end
     params.require(:user).permit(:username, :password,)
   end
 end
+
