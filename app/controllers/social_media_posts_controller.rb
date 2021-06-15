@@ -1,5 +1,5 @@
 class SocialMediaPostsController < ApplicationController
-  skip_before_action :authorized, only [:index, :update]
+  skip_before_action :authorized, only: [:index, :update]
 
   def index
     @posts=SocialMediaPost.all
@@ -7,7 +7,7 @@ class SocialMediaPostsController < ApplicationController
   end
   
   def create
-    @post= SocialMediaPost.create(post_params.merge(user_id: @user.id, likes: 0)
+    @post= SocialMediaPost.create(post_params.merge(user_id: @user.id, likes: 0))
     render json: @post
   end 
 
