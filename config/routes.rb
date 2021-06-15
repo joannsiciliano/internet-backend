@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :social_media_posts
   resources :voids
   resources :moods
   resources :users

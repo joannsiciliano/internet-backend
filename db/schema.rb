@@ -10,12 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_14_160500) do
+ActiveRecord::Schema.define(version: 2021_06_15_174639) do
 
   create_table "moods", force: :cascade do |t|
     t.string "feeling"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "social_media_posts", force: :cascade do |t|
+    t.string "message"
+    t.string "featured_image"
+    t.integer "likes"
+    t.integer "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_social_media_posts_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -34,5 +44,6 @@ ActiveRecord::Schema.define(version: 2021_06_14_160500) do
     t.index ["mood_id"], name: "index_voids_on_mood_id"
   end
 
+  add_foreign_key "social_media_posts", "users"
   add_foreign_key "voids", "moods"
 end
