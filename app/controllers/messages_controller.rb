@@ -1,13 +1,14 @@
 class MessagesController < ApplicationController
+  skip_before_action :authorized
   def index
-    messages=Message.all
-    render json: message
+    @messages=Message.all
+    render json: @messages
   end
 
   def create
-    mesage= Message.new(message_params)
-    if message.save
-      ActionCable.server.broadcast 'messages_channel'
+    @message= Message.new(message_params)
+    if @message.save
+      ActionCable.server.broadcast 'messages_channel', @message
       head:ok
     else
       head:ok  
@@ -15,7 +16,7 @@ class MessagesController < ApplicationController
 end
 private
 
-def mesage_params
+def message_params
   params.require(:message).permit(:content)
   end 
 end

@@ -7,7 +7,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 Void.destroy_all
 Mood.destroy_all
-
+Message.destroy_all
 
 f=Mood.create(feeling:"F")
 dont_look_at_me=Mood.create(feeling:"please do not perceive me")
