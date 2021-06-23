@@ -12,6 +12,9 @@
 
 ActiveRecord::Schema.define(version: 2021_06_16_161717) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "messages", force: :cascade do |t|
     t.string "content"
     t.datetime "created_at", precision: 6, null: false
@@ -28,7 +31,7 @@ ActiveRecord::Schema.define(version: 2021_06_16_161717) do
     t.string "message"
     t.string "featured_image"
     t.integer "likes"
-    t.integer "user_id", null: false
+    t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_social_media_posts_on_user_id"
@@ -44,7 +47,7 @@ ActiveRecord::Schema.define(version: 2021_06_16_161717) do
   create_table "voids", force: :cascade do |t|
     t.string "name"
     t.text "message"
-    t.integer "mood_id", null: false
+    t.bigint "mood_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["mood_id"], name: "index_voids_on_mood_id"
