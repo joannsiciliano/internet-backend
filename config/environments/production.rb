@@ -35,7 +35,8 @@ Rails.application.configure do
 
   # Mount Action Cable outside main process or domain.
   # config.action_cable.mount_path = '/cable'
-  config.action_cable.url = 'wss://redistogo:d1b27b2ac0e752e742278d4c9f8875d1@scat.redistogo.com:11979/cable'
+  config.web_socket_server_url = 'wss://this-is-internet.herokuapp.com/cable'
+  config.action_cable.url = 'wss://redistogo:d1b27b2ac0e752e742278d4c9f8875d1@scat.redistogo.com:11979'
   config.action_cable.allowed_request_origins = [ 'https://this-is-internet.herokuapp.com', 'https://this-is-internet.firebaseapp.com', /http:\/\/this-is-internet.herokuapp.com.*/ ]
 
   # Force all access to the app over SSL, use Strict-Transport-Security, and use secure cookies.
